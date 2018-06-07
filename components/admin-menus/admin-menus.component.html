@@ -5,7 +5,8 @@
       <div class="columns is-multiline">
         <div class="column is-12 has-text-centered" *ngFor="let menu of menus">
           <button mat-button (click)="selectMenu(menu)">
-            {{menu.name[languages[1].slug]}}
+            <!-- BUG POTENTIAL -->
+            {{menu.name[languages[0].slug]}}
           </button>
         </div>
       </div>
