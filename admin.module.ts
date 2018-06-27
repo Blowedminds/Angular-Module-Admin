@@ -17,6 +17,8 @@ import { AdminLanguagesComponent } from './components/admin-languages/admin-lang
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { AdminUserAddComponent } from './components/admin-user-add/admin-user-add.component';
 import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
+import { AdminRolesComponent } from './components/admin-roles/admin-roles.component';
+import { AdminPermissionsComponent } from './components/admin-permissions/admin-permissions.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-
     AdminLanguagesComponent,
     AdminUsersComponent,
     AdminUserAddComponent,
-    AdminUserEditComponent
+    AdminUserEditComponent,
+    AdminRolesComponent,
+    AdminPermissionsComponent
   ],
   imports: [
     CommonModule,

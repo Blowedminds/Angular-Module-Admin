@@ -9,6 +9,8 @@ import { AdminUsersComponent } from './components/admin-users/admin-users.compon
 import { AdminUserAddComponent } from './components/admin-user-add/admin-user-add.component';
 import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { AdminRolesComponent } from './components/admin-roles/admin-roles.component';
+import { AdminPermissionsComponent } from './components/admin-permissions/admin-permissions.component';
 
 const routes = [
   {
@@ -21,6 +23,8 @@ const routes = [
           { path: 'languages', component: AdminLanguagesComponent, outlet: 'settings' },
           { path: 'categories', component: AdminCategoriesComponent, outlet: 'settings' },
           { path: 'users', component: AdminUsersComponent, outlet: 'settings' },
+          { path: 'roles', component: AdminRolesComponent, outlet: 'settings' },
+          { path: 'permissions', component: AdminPermissionsComponent, outlet: 'settings' },
         ]
       }
     ]

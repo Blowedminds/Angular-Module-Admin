@@ -1,0 +1,84 @@
+<mat-card *ngIf="isPageReady">
+  <div class="columns is-desktop">
+
+    <div class="column is-one-third">
+      <div class="columns is-multiline">
+        <div class="column is-12 has-text-centered" *ngFor="let role of roles">
+          <button mat-button (click)="selectRole(role)">
+            <!-- BUG POTENTIAL -->
+            {{role.name}}
+          </button>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column has-text-centered">
+          <button mat-mini-fab (click)="selectRole(default_role)">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="column is-one-third">
+
+      <form (ngSubmit)="submitForm(f)" #f="ngForm" class="form one-page-form" *ngIf="edit_role">
+
+        <i class="fa fa-window-close" aria-hidden="true" (click)="edit_role = null" style="float: right"></i>
+
+        <input type="hidden" name="id" [ngModel]="edit_role.id" name="id" required>
+        
+        <mat-form-field class="form-group">
+          <input matInput type="text" placeholder="Name" [ngModel]="edit_role.name" name="name" required autofocus>
+        </mat-form-field>
+
+        <mat-form-field class="form-group">
+          <input matInput type="text" placeholder="Slug" [ngModel]="edit_role.slug" name="slug" required>
+        </mat-form-field>
+
+        <mat-form-field class="form-group">
+          <input matInput type="text" placeholder="Description" [ngModel]="edit_role.description" name="description" required>
+        </mat-form-field>
+
+        <div class="columns">
+          <div class="column">
+
+            <div class="level">
+              <strong>İzinler</strong>
+            </div>
+
+            <div class="level">
+              <ul>
+                <li class="" *ngFor="let role of has_roles">
+                  <span class="interactive-role" [ngClass]="{'role-changed': role.changed}" (click)="discardrole(role.id)">{{role.name}}</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="column">
+
+            <div class="level">
+              <strong>İzin Ekle</strong>
+            </div>
+
+            <div class="level">
+              <ul>
+                <li *ngFor="let role of not_have_roles">
+                  <span class="interactive-role" [ngClass]="{'role-changed': role.changed}" (click)="addRole(role.id)">{{role.name}}</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <button mat-raised-button type="submit">{{ edit_role.id ? 'Güncelle' : 'Ekle'}}</button>
+
+        <button mat-raised-button type="button" id="delete" color="warn" (click)="deleteRole(edit_role.id)" *ngIf="edit_role.id">Sil</button>
+
+      </form>
+    </div>
+
+  </div>
+</mat-card>

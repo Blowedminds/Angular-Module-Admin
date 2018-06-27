@@ -117,7 +117,7 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
 
   selectMenu(menu: any) {
     this.edit_menu = menu;
-    console.log(this.edit_menu);
+
     this.filterRoles(menu.roles);
   }
 

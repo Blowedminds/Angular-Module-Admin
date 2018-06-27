@@ -37,6 +37,42 @@ export class AdminRequestService extends MainRequestService {
     return this.makeDeleteRequest('admin.user', user_id);
   }
 
+  getRoles(): Observable<any> {
+    return this.makeGetRequest('admin.roles');
+  }
+
+  postRole(data: any, id: number): Observable<any> {
+    return this.makePostRequest('admin.role', data, `${id}`);
+  }
+
+  putRole(data: any): Observable<any> {
+    return this.makePutRequest('auth.register', data);
+  }
+
+  deleteRole(role_id: string): Observable<any> {
+    return this.makeDeleteRequest('admin.role', role_id);
+  }
+
+  getPermissions(): Observable<any> {
+    return this.makeGetRequest('admin.permissions');
+  }
+
+  getPermission(permission_id: string): Observable<any> {
+    return this.makeGetRequest('admin.permission', permission_id);
+  }
+
+  postPermission(data: any, id: number): Observable<any> {
+    return this.makePostRequest('admin.permission', data, `${id}`);
+  }
+
+  putPermission(data: any): Observable<any> {
+    return this.makePutRequest('admin.permission', data);
+  }
+
+  deletePermission(permission_id: string): Observable<any> {
+    return this.makeDeleteRequest('admin.permission', permission_id);
+  }
+
   getMenus(): Observable<any> {
     return this.makeGetRequest('admin.menus');
   }
