@@ -53,11 +53,10 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         this.languages = response;
 
-        for (const one of this.languages) {
-          this.default_menu.name[one] = null;
-          this.default_menu.tooltip[one] = null;
+        for (const language of this.languages) {
+          this.default_menu.name[language.slug] = '';
+          this.default_menu.tooltip[language.slug] = '';
         }
-
       });
 
     const rq3 = this.cacheService.get('roles', this.adminRequestService.makeGetRequest('admin.roles'))
@@ -103,14 +102,9 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
   refreshComponent() {
     this.menus = null;
 
-    this.roles = null;
-
     this.edit_menu = null;
 
-    const rq1 = this.adminRequestService.getMenus().subscribe(response => {
-      this.menus = response.menus;
-      this.roles = response.roles;
-    });
+    const rq1 = this.adminRequestService.getMenus().subscribe(response => this.menus = response);
 
     this.subs.add(rq1);
   }

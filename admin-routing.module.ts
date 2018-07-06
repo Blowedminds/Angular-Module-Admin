@@ -12,21 +12,18 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { AdminRolesComponent } from './components/admin-roles/admin-roles.component';
 import { AdminPermissionsComponent } from './components/admin-permissions/admin-permissions.component';
 
-const routes = [
+const routes: Routes = [
   {
     path: '', component: NavigationComponent, children: [
       { path: 'user', component: AdminUserAddComponent },
       { path: 'user/:user_id', component: AdminUserEditComponent },
-      {
-        path: 'admin', component: AdminPanelComponent, children: [
-          { path: 'menus', component: AdminMenusComponent, outlet: 'settings' },
-          { path: 'languages', component: AdminLanguagesComponent, outlet: 'settings' },
-          { path: 'categories', component: AdminCategoriesComponent, outlet: 'settings' },
-          { path: 'users', component: AdminUsersComponent, outlet: 'settings' },
-          { path: 'roles', component: AdminRolesComponent, outlet: 'settings' },
-          { path: 'permissions', component: AdminPermissionsComponent, outlet: 'settings' },
-        ]
-      }
+      { path: 'admin', component: AdminPanelComponent },
+      { path: 'admin/roles', component: AdminRolesComponent },
+      { path: 'admin/permissions', component: AdminPermissionsComponent },
+      { path: 'admin/menus', component: AdminMenusComponent },
+      { path: 'admin/languages', component: AdminLanguagesComponent },
+      { path: 'admin/categories', component: AdminCategoriesComponent },
+      { path: 'admin/users', component: AdminUsersComponent },
     ]
   }
 ];
