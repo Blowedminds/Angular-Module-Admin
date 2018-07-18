@@ -43,7 +43,8 @@ export class AdminRolesComponent implements OnInit, OnDestroy {
     const rq1 = this.adminRequestService.getRoles().subscribe( response => this.roles = response );
     const rq2 = this.adminRequestService.getPermissions().subscribe( response => this.permissions = response );
 
-    this.subs.add(rq1).add(rq2);
+    this.subs.add(rq1);
+    this.subs.add(rq2);
   }
 
   ngOnDestroy() {
