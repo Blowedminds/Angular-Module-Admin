@@ -43,31 +43,12 @@
         <div class="columns">
           <div class="column">
 
-            <div class="level">
-              <strong>İzinler</strong>
+            <div class="field">
+              <p class="title is-size-4 has-text-weight-light">İzinler</p>
+              <hr>
             </div>
-
-            <div class="level">
-              <ul>
-                <li class="" *ngFor="let role of has_roles">
-                  <span class="interactive-role" [ngClass]="{'role-changed': role.changed}" (click)="discardrole(role.id)">{{role.name}}</span>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-          <div class="column">
-
-            <div class="level">
-              <strong>İzin Ekle</strong>
-            </div>
-
-            <div class="level">
-              <ul>
-                <li *ngFor="let role of not_have_roles">
-                  <span class="interactive-role" [ngClass]="{'role-changed': role.changed}" (click)="addRole(role.id)">{{role.name}}</span>
-                </li>
-              </ul>
+            <div class="field" *ngFor="let permission of permissions">
+              <mat-checkbox [(ngModel)]="permission.exist" [name]="permission.slug">{{permission.name}}</mat-checkbox>
             </div>
 
           </div>

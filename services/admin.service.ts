@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class AdminService {
+import { MainService } from '../imports';
 
-  constructor() { }
+@Injectable()
+export class AdminService extends MainService {
+
+  constructor() {
+    super();
+   }
 
 }
