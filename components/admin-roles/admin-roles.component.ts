@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 
 @Component({
-  selector: 'admin-roles',
+  selector: 'app-admin-roles',
   templateUrl: './admin-roles.component.html',
   styleUrls: ['./admin-roles.component.sass']
 })
@@ -66,7 +66,7 @@ export class AdminRolesComponent implements OnInit, OnDestroy {
       permissions: permissions
     };
 
-    let rq1;
+    let rq1: any;
 
     if (role.id) {
 

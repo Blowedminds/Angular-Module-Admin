@@ -46,7 +46,7 @@ export class AdminRequestService extends MainRequestService {
   }
 
   putRole(data: any): Observable<any> {
-    return this.makePutRequest('auth.register', data);
+    return this.makePutRequest('admin.role', data);
   }
 
   deleteRole(role_id: string): Observable<any> {
