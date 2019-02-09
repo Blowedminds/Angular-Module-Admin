@@ -12,18 +12,17 @@ export class NavigationComponent extends MainNavigationComponent {
   constructor(
     private mainRequestService: MainRequestService,
     private cacheService: CacheService
-  )
-  {
+  ) {
     super();
   }
 
   ngOnInit() {
 
-    this.cacheService.get('menus', this.mainRequestService.makeGetRequest('user.menus'))
-                      .subscribe(response => this.menus = response);
+    this.cacheService.get('menus', this.mainRequestService.makeGetRequest('user.menus', localStorage.getItem('locale') || 'tr'))
+      .subscribe(response => this.menus = response);
 
     this.cacheService.get('user', this.mainRequestService.makeGetRequest('user.info'))
-                      .subscribe(response => this.user = response);
+      .subscribe(response => this.user = response);
   }
 
 }
