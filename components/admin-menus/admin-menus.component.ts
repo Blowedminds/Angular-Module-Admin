@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { AdminRequestService } from '../../services/admin-request.service';
 import { CacheService } from '../../imports';
+import { HelpersService } from '../../../auth/imports';
 
 @Component({
   selector: 'app-admin-menus',
@@ -21,7 +22,11 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
 
   languages: any;
 
+  locale: string;
+
   roles: Array<any> = [];
+
+  listedMenus: Array<any> = [];
 
   has_roles: Array<any> = [];
 
@@ -43,26 +48,48 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
 
   constructor(
     private adminRequestService: AdminRequestService,
+    private helpersService: HelpersService,
     private cacheService: CacheService
-  ) { }
+  ) {
+    this.locale = this.helpersService.getLocale();
+  }
 
   ngOnInit() {
-    const rq1 = this.adminRequestService.getMenus().subscribe(response => this.menus = response);
+    this.subs.add(
+      this.adminRequestService.getMenus().subscribe(response => {
+        this.menus = response;
 
-    const rq2 = this.cacheService.get('languages', this.adminRequestService.makeGetRequest('admin.languages'))
-      .subscribe(response => {
-        this.languages = response;
-
-        for (const language of this.languages) {
-          this.default_menu.name[language.slug] = '';
-          this.default_menu.tooltip[language.slug] = '';
+        if (this.roles) {
+          this.listMenusByRole();
         }
-      });
+      })
+    );
 
-    const rq3 = this.cacheService.get('roles', this.adminRequestService.makeGetRequest('admin.roles'))
-      .subscribe(response => this.roles = response);
+    this.subs.add(
+      this.cacheService.get('languages', this.adminRequestService.makeGetRequest('admin.languages'))
+        .subscribe(response => {
+          this.languages = response;
 
-    // this.subs.add(rq1).add(rq2);
+          for (const language of this.languages) {
+            this.default_menu.name[language.slug] = '';
+            this.default_menu.tooltip[language.slug] = '';
+          }
+        })
+    );
+
+    this.subs.add(
+      this.cacheService.get('roles', this.adminRequestService.makeGetRequest('admin.roles'))
+        .subscribe(response => {
+          for (const role of response) {
+            role.filter = true;
+          }
+          this.roles = response;
+
+          if (this.menus) {
+            this.listMenusByRole();
+          }
+        })
+    );
   }
 
   ngOnDestroy() {
@@ -80,13 +107,11 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
       roles: this.has_roles
     };
 
-    let rq1;
+    let rq1: any;
 
     if (menu.id) {
-
       rq1 = this.adminRequestService.postMenu(menu).subscribe(response => this.refreshComponent());
     } else {
-
       rq1 = this.adminRequestService.putMenu(menu).subscribe(response => this.refreshComponent());
     }
 
@@ -94,9 +119,9 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
   }
 
   deleteMenu(id: number) {
-    const rq4 = this.adminRequestService.deleteMenu(id).subscribe(response => this.refreshComponent());
-
-    this.subs.add(rq4);
+    this.subs.add(
+      this.adminRequestService.deleteMenu(id).subscribe(response => this.refreshComponent())
+    );
   }
 
   refreshComponent() {
@@ -104,9 +129,11 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
 
     this.edit_menu = null;
 
-    const rq1 = this.adminRequestService.getMenus().subscribe(response => this.menus = response);
+    this.cacheService.delete('menus');
 
-    this.subs.add(rq1);
+    this.subs.add(
+      this.adminRequestService.getMenus().subscribe(response => this.menus = response)
+    );
   }
 
   selectMenu(menu: any) {
@@ -126,7 +153,7 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
 
       for (const one of roles) {
 
-        if (one.id === role.id) {
+        if (one.role_id === role.id) {
 
           return true;
         }
@@ -164,5 +191,32 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
     this.has_roles.sort((a, b) => a.id - b.id);
 
     this.not_has_roles.sort((a, b) => a.id - b.id);
+  }
+
+  filterMenus(role: any) {
+    role.filter = !(role.filter);
+
+    this.listMenusByRole();
+  }
+
+  listMenusByRole() {
+    this.listedMenus = [];
+
+    for (const menu of this.menus) {
+      for (const role of this.roles) {
+        if (!role.filter) {
+          continue;
+        }
+
+        if (this.hasRole(menu.roles, role.id)) {
+          this.listedMenus.push(menu);
+          break;
+        }
+      }
+    }
+  }
+
+  hasRole(menuRoles: any, role_id: number): boolean {
+    return menuRoles.findIndex(role => role.role_id === role_id) !== -1;
   }
 }

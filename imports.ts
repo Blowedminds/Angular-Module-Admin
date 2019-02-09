@@ -4,4 +4,4 @@ export { HelpersService } from '../core/services/helpers.service';
 export { MainRequestService } from '../core/services/main-request.service';
 export { MainService } from '../core/services/main.service';
 export { ImageSelectComponent } from '../shared/dialogs/images/image-select/image-select.component';
-export { MainNavigationComponent } from '../shared/components/main-navigation/main-navigation.component';
+export { NavigationComponent } from '../navigation/components/navigation/navigation.component';

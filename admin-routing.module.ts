@@ -8,9 +8,9 @@ import { AdminCategoriesComponent } from './components/admin-categories/admin-ca
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { AdminUserAddComponent } from './components/admin-user-add/admin-user-add.component';
 import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { AdminRolesComponent } from './components/admin-roles/admin-roles.component';
 import { AdminPermissionsComponent } from './components/admin-permissions/admin-permissions.component';
+import { NavigationComponent } from './imports';
 
 const routes: Routes = [
   {

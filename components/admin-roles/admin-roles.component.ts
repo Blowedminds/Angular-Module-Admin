@@ -95,6 +95,8 @@ export class AdminRolesComponent implements OnInit, OnDestroy {
 
     this.edit_role = null;
 
+    this.cacheService.delete('roles');
+
     const rq1 = this.adminRequestService.getRoles().subscribe(roles => this.roles = roles);
     const rq2 = this.adminRequestService.getPermissions().subscribe(permissions => this.permissions = permissions);
 

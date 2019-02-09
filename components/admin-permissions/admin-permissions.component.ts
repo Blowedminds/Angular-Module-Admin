@@ -75,6 +75,8 @@ export class AdminPermissionsComponent implements OnInit, OnDestroy {
 
     this.edit_permission = null;
 
+    this.cacheService.delete('permissions');
+
     const rq1 = this.adminRequestService.getPermissions().subscribe(response => this.permissions = response);
 
     this.subs.add(rq1);

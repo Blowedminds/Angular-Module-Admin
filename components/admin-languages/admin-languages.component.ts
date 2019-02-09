@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { AdminRequestService } from '../../services/admin-request.service';
+import { CacheService } from '../../../auth/imports';
 
 @Component({
   selector: 'app-admin-languages',
@@ -29,7 +30,8 @@ export class AdminLanguagesComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private adminRequestService: AdminRequestService
+    private adminRequestService: AdminRequestService,
+    private cacheService: CacheService
   ) { }
 
   ngOnInit() {
@@ -72,6 +74,8 @@ export class AdminLanguagesComponent implements OnInit, OnDestroy {
     this.languages = null;
 
     this.edit_language = null;
+
+    this.cacheService.delete('languages');
 
     const rq1 = this.adminRequestService.getLanguages().subscribe(response => this.languages = response);
 

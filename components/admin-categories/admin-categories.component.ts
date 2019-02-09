@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { AdminRequestService } from '../../services/admin-request.service';
+import { CacheService } from '../../../auth/imports';
 
 @Component({
   selector: 'app-admin-categories',
@@ -30,7 +31,8 @@ export class AdminCategoriesComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private adminRequestService: AdminRequestService
+    private adminRequestService: AdminRequestService,
+    private cacheService: CacheService
   ) { }
 
   ngOnInit() {
@@ -73,6 +75,8 @@ export class AdminCategoriesComponent implements OnInit, OnDestroy {
     this.categories = null;
 
     this.edit_category = null;
+
+    this.cacheService.delete('categories');
 
     const rq1 = this.adminRequestService.getCategories().subscribe(response => this.categories = response);
 
