@@ -13,14 +13,6 @@
               <li (click)="selectLanguage(language)" *ngFor="let language of languages"><a>{{language.name}}</a></li>
             </ul>
           </aside>
-
-          <div class="columns">
-            <div class="column has-text-centered">
-              <button mat-mini-fab (click)="selectLanguage(default_language)">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
         </div>
 
         <div class="column is-one-third">
@@ -43,12 +35,18 @@
 
             <button mat-raised-button type="submit">{{ edit_language.id ? 'Güncelle' : 'Ekle'}}</button>
 
-            <button mat-raised-button type="button" id="delete" color="warn" (click)="delete(edit_language.id)" *ngIf="edit_language.id">Sil</button>
+            <button mat-raised-button type="button" id="delete" color="warn" (click)="delete(edit_language.id)"
+              *ngIf="edit_language.id">Sil</button>
 
           </form>
         </div>
 
       </div>
     </mat-card>
+
+    <button mat-fab class="add-btn" (click)="selectLanguage(default_language)">
+      <mat-icon>add</mat-icon>
+    </button>
+
   </div>
 </div>
