@@ -132,7 +132,13 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
     this.cacheService.delete('menus');
 
     this.subs.add(
-      this.adminRequestService.getMenus().subscribe(response => this.menus = response)
+      this.adminRequestService.getMenus().subscribe(response => {
+        this.menus = response;
+
+        if (this.roles) {
+          this.listMenusByRole();
+        }
+      })
     );
   }
 
