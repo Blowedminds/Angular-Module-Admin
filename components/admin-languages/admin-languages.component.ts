@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { AdminRequestService } from '../../services/admin-request.service';
-import { CacheService } from '../../../auth/imports';
+import { CacheService } from '../../imports';
 
 @Component({
   selector: 'app-admin-languages',

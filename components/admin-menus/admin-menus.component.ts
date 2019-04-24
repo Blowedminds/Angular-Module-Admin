@@ -4,8 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { AdminRequestService } from '../../services/admin-request.service';
-import { CacheService } from '../../imports';
-import { HelpersService } from '../../../auth/imports';
+import { CacheService, HelpersService } from '../../imports';
 
 @Component({
   selector: 'app-admin-menus',

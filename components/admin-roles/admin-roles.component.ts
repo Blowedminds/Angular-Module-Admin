@@ -6,8 +6,6 @@ import { CacheService } from '../../imports';
 import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 
-import { forkJoin } from 'rxjs';
-
 @Component({
   selector: 'app-admin-roles',
   templateUrl: './admin-roles.component.html',
