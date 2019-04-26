@@ -1,0 +1,6 @@
+<ul class="menu-list">
+  <li *ngFor="let menu of menus">
+    <a (click)="emitSelect(menu)">{{menu.name[locale]}} - {{menu.id}}</a>
+    <app-recursive-menu *ngIf="menu.children.length > 0" [menus]="menu.children" [locale]="locale" (select)="emitSelect($event)"></app-recursive-menu>
+  </li>
+</ul>

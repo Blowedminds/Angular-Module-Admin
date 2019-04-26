@@ -15,7 +15,8 @@
       <div class="columns">
         <div class="column is-one-third">
           <aside class="menu">
-            <ul class="menu-list">
+            <app-recursive-menu [menus]="listedMenus" [locale]="locale" (select)="selectMenu($event)"></app-recursive-menu>
+            <!-- <ul class="menu-list">
               <li *ngFor="let menu of listedMenus">
                 <a (click)="selectMenu(menu)">{{menu.name[locale]}} - {{menu.id}}</a>
                 <ul *ngIf="menu.children.length > 0">
@@ -24,7 +25,7 @@
                   </li>
                 </ul>
               </li>
-            </ul>
+            </ul> -->
           </aside>
         </div>
         <div class="column is-one-third is-offset-2">
