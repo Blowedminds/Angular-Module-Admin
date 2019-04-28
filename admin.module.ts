@@ -16,6 +16,7 @@ import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-
 import { AdminRolesComponent } from './components/admin-roles/admin-roles.component';
 import { AdminPermissionsComponent } from './components/admin-permissions/admin-permissions.component';
 import { NavigationModule } from '../navigation/navigation.module';
+import { RecursiveMenuComponent } from './components/admin-menus/recursive-menu/recursive-menu.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NavigationModule } from '../navigation/navigation.module';
     AdminUserEditComponent,
     AdminRolesComponent,
     AdminPermissionsComponent,
+    RecursiveMenuComponent,
   ],
   imports: [
     CommonModule,
