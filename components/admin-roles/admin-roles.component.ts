@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminRequestService } from '../../services/admin-request.service';
 import { AdminService } from '../../services/admin.service';
 import { CacheService } from '../../imports';
