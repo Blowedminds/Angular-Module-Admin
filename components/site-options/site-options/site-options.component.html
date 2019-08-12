@@ -44,7 +44,7 @@
             </tbody>
         </table>
         <form #f="ngForm" (ngSubmit)="postOption(f)" *ngIf="addOption">
-            <div class="columns">
+            <div class="columns" style="position: relative">
                 <div class="column is-one-third">
                     <mat-form-field>
                         <input matInput placeholder="Anahtar Kelime" ngModel name="key" required>
@@ -55,13 +55,10 @@
                         <input matInput placeholder="Değer" ngModel name="value" required>
                     </mat-form-field>
 
-                    <button mat-raised-button type="submit" style="position: absolute; top: 100%; left: 90%;">
-                        <mat-icon>save</mat-icon> Kaydet
-                    </button>
                 </div>
                 <div class="column is-one-third">
                     <mat-form-field>
-                        <mat-select placeholder="Veri Türü" ngModel name="type">
+                        <mat-select placeholder="Veri Türü" ngModel name="type" required>
                             <mat-option *ngFor="let type of types" [value]="type.type">
                                 {{ type.name }}
                             </mat-option>
@@ -69,6 +66,10 @@
                     </mat-form-field>
                 </div>
 
+                <button mat-raised-button type="submit" style="position: absolute; top: 100%; left: 90%;"
+                    [disabled]="!f.valid">
+                    <mat-icon>save</mat-icon> Kaydet
+                </button>
             </div>
         </form>
 
