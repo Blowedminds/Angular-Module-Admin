@@ -5,3 +5,4 @@ export { MainRequestService } from '../core/services/main-request.service';
 export { MainService } from '../core/services/main.service';
 export { ImageSelectComponent } from '../shared/dialogs/images/image-select/image-select.component';
 export { NavigationComponent } from '../navigation/components/navigation/navigation.component';
+export { MainComponent } from '../shared/components/main/main.component';

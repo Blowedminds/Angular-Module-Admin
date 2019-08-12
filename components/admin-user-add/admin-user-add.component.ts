@@ -27,7 +27,7 @@ export class AdminUserAddComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    const rq1 = this.cacheService.get('roles', this.adminRequestService.makeGetRequest('admin.roles'))
+    const rq1 = this.cacheService.get('roles', this.adminRequestService.makeGetRequest('core.role.roles'))
       .subscribe(response => this.roles = response);
 
     this.subs.add(rq1);

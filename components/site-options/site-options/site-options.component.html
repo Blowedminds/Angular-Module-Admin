@@ -1,0 +1,79 @@
+<ng-template #loading>
+    <mat-spinner class="loading"></mat-spinner>
+</ng-template>
+
+<div class="container" *ngIf="isPageReady; else loading">
+    <mat-card>
+        <div class="title">
+            <h3 class="is-size-3">Site Seçenekleri</h3>
+            <hr>
+        </div>
+        <table class="table is-fullwidth is-hoverable">
+            <thead>
+                <tr>
+                    <td>Veri Türü</td>
+                    <td>Anahtar Kelime</td>
+                    <td>Değer</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let option of options">
+                    <td>{{option.type.name}}</td>
+                    <td>{{option.key}}</td>
+                    <td>
+                        <div [ngSwitch]="option.type.type">
+                            <div *ngSwitchCase="'boolean'">
+                                <mat-slide-toggle [checked]="option.value === 'true'" (change)="putOption(option)">
+                                </mat-slide-toggle>
+                            </div>
+                            <div *ngSwitchCase="'string'">
+                                <mat-form-field>
+                                    <input matInput placeholder="" [(ngModel)]="option.value"
+                                        (keyup.enter)="putOption(option)">
+                                </mat-form-field>
+                            </div>
+                            <div *ngSwitchCase="'number'">
+                                <mat-form-field>
+                                    <input matInput placeholder="" [(ngModel)]="option.value"
+                                        (keyup.enter)="putOption(option)">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <form #f="ngForm" (ngSubmit)="postOption(f)" *ngIf="addOption">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <mat-form-field>
+                        <input matInput placeholder="Anahtar Kelime" ngModel name="key" required>
+                    </mat-form-field>
+                </div>
+                <div class="column is-one-third">
+                    <mat-form-field>
+                        <input matInput placeholder="Değer" ngModel name="value" required>
+                    </mat-form-field>
+
+                    <button mat-raised-button type="submit" style="position: absolute; top: 100%; left: 90%;">
+                        <mat-icon>save</mat-icon> Kaydet
+                    </button>
+                </div>
+                <div class="column is-one-third">
+                    <mat-form-field>
+                        <mat-select placeholder="Veri Türü" ngModel name="type">
+                            <mat-option *ngFor="let type of types" [value]="type.type">
+                                {{ type.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </div>
+        </form>
+
+        <button mat-fab class="add-btn" type="button" (click)="addOption = true">
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-card>
+</div>

@@ -65,7 +65,7 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
     );
 
     this.subs.add(
-      this.cacheService.get('languages', this.adminRequestService.makeGetRequest('admin.languages'))
+      this.cacheService.get('languages', this.adminRequestService.makeGetRequest('core.language.languages'))
         .subscribe(response => {
           this.languages = response;
 
@@ -77,7 +77,7 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
     );
 
     this.subs.add(
-      this.cacheService.get('roles', this.adminRequestService.makeGetRequest('admin.roles'))
+      this.cacheService.get('roles', this.adminRequestService.makeGetRequest('core.role.roles'))
         .subscribe(response => {
           for (const role of response) {
             role.filter = true;
@@ -103,7 +103,7 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
       url: f.value.url,
       weight: f.value.weight,
       parent: f.value.parent,
-      roles: this.has_roles
+      roles: this.has_roles.map( role => role.id)
     };
 
     let rq1: any;

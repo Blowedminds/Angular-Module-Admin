@@ -18,15 +18,15 @@ export class AdminRequestService extends MainRequestService {
   }
 
   getUsers(): Observable<any> {
-    return this.makeGetRequest('admin.users');
+    return this.makeGetRequest('core.user.users');
   }
 
   getUser(user_id: string): Observable<any> {
-    return this.makeGetRequest('admin.user', user_id);
+    return this.makeGetRequest('core.user.user', user_id);
   }
 
   postUser(data: any, id: number): Observable<any> {
-    return this.makePostRequest('admin.user', data, `${id}`);
+    return this.makePostRequest('core.user.user', data, `${id}`);
   }
 
   putUser(data: any): Observable<any> {
@@ -34,90 +34,110 @@ export class AdminRequestService extends MainRequestService {
   }
 
   deleteUser(user_id: string): Observable<any> {
-    return this.makeDeleteRequest('admin.user', user_id);
+    return this.makeDeleteRequest('core.user.user', user_id);
   }
 
   getRoles(): Observable<any> {
-    return this.makeGetRequest('admin.roles');
+    return this.makeGetRequest('core.role.roles');
   }
 
-  postRole(data: any, id: number): Observable<any> {
-    return this.makePostRequest('admin.role', data, `${id}`);
+  putRole(data: any, id: number): Observable<any> {
+    return this.makePutRequest('core.role.role', data, `${id}`);
   }
 
-  putRole(data: any): Observable<any> {
-    return this.makePutRequest('admin.role', data);
+  postRole(data: any): Observable<any> {
+    return this.makePostRequest('core.role.role', data);
   }
 
   deleteRole(role_id: string): Observable<any> {
-    return this.makeDeleteRequest('admin.role', role_id);
+    return this.makeDeleteRequest('core.role.role', role_id);
   }
 
   getPermissions(): Observable<any> {
-    return this.makeGetRequest('admin.permissions');
+    return this.makeGetRequest('core.permission.permissions');
   }
 
   getPermission(permission_id: string): Observable<any> {
-    return this.makeGetRequest('admin.permission', permission_id);
+    return this.makeGetRequest('core.permission.permission', permission_id);
   }
 
-  postPermission(data: any, id: number): Observable<any> {
-    return this.makePostRequest('admin.permission', data, `${id}`);
+  putPermission(data: any, id: number): Observable<any> {
+    return this.makePutRequest('core.permission.permission', data, `${id}`);
   }
 
-  putPermission(data: any): Observable<any> {
-    return this.makePutRequest('admin.permission', data);
+  postPermission(data: any): Observable<any> {
+    return this.makePostRequest('core.permission.permission', data);
   }
 
   deletePermission(permission_id: string): Observable<any> {
-    return this.makeDeleteRequest('admin.permission', permission_id);
+    return this.makeDeleteRequest('core.permission.permission', permission_id);
   }
 
   getMenus(): Observable<any> {
-    return this.makeGetRequest('admin.menus');
+    return this.makeGetRequest('core.menu.menus');
   }
 
   postMenu(data: any): Observable<any> {
-    return this.makePostRequest('admin.menus', data);
+    return this.makePostRequest('core.menu.menu', data);
   }
 
   putMenu(data: any): Observable<any> {
-    return this.makePutRequest('admin.menus', data);
+    return this.makePutRequest('core.menu.menu', data);
   }
 
   deleteMenu(id: number): Observable<any> {
-    return this.makeDeleteRequest('admin.menus', `${id}`);
+    return this.makeDeleteRequest('core.menu.menu', `${id}`);
   }
 
   getLanguages(): Observable<any> {
-    return this.makeGetRequest('admin.languages');
+    return this.makeGetRequest('core.language.languages');
   }
 
   postLanguage(data: any): Observable<any> {
-    return this.makePostRequest('admin.languages', data);
+    return this.makePostRequest('core.language.languages', data);
   }
 
   putLanguage(data: any): Observable<any> {
-    return this.makePutRequest('admin.languages', data);
+    return this.makePutRequest('core.language.languages', data);
   }
 
   deleteLanguage(id: number): Observable<any> {
-    return this.makeDeleteRequest('admin.languages', `${id}`);
+    return this.makeDeleteRequest('core.language.languages', `${id}`);
   }
 
   getCategories(): Observable<any> {
-    return this.makeGetRequest('admin.categories');
+    return this.makeGetRequest('core.category.categories');
   }
 
   postCategory(data: any, id: number): Observable<any> {
-    return this.makePostRequest('admin.categories', data, `${id}`);
+    return this.makePostRequest('core.category.categories', data, `${id}`);
   }
 
   putCategory(data: any): Observable<any> {
-    return this.makePutRequest('admin.categories', data);
+    return this.makePutRequest('core.category.categories', data);
   }
 
   deleteCategory(id: number): Observable<any> {
-    return this.makeDeleteRequest('admin.categories', `${id}`);
+    return this.makeDeleteRequest('core.category.categories', `${id}`);
+  }
+
+  getOptions(): Observable<any> {
+    return this.makeGetRequest('core.option.options');
+  }
+
+  getOption(key: string): Observable<any> {
+    return this.makeGetRequest('core.option.option', key);
+  }
+
+  postOption(data: any): Observable<any> {
+    return this.makePostRequest('core.option.option', data);
+  }
+
+  putOption(key: string, data: any): Observable<any> {
+    return this.makePutRequest('core.option.option', data, key);
+  }
+
+  deleteOption(key: string): Observable<any> {
+    return this.makeDeleteRequest('core.option.option', key);
   }
 }

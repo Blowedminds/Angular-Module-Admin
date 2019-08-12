@@ -11,6 +11,7 @@ import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-
 import { AdminRolesComponent } from './components/admin-roles/admin-roles.component';
 import { AdminPermissionsComponent } from './components/admin-permissions/admin-permissions.component';
 import { NavigationComponent } from './imports';
+import { SiteOptionsComponent } from './components/site-options/site-options/site-options.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'admin/languages', component: AdminLanguagesComponent },
       { path: 'admin/categories', component: AdminCategoriesComponent },
       { path: 'admin/users', component: AdminUsersComponent },
+      { path: 'options', component: SiteOptionsComponent }
     ]
   }
 ];

@@ -68,24 +68,24 @@ export class AdminRolesComponent implements OnInit, OnDestroy {
 
     if (role.id) {
 
-      rq1 = this.adminRequestService.postRole(role, role.id).subscribe(response => this.refreshComponent(response));
+      rq1 = this.adminRequestService.putRole(role, role.id).subscribe(response => this.refreshComponent('Rol güncellendi', 'Tamam', true));
     } else {
 
-      rq1 = this.adminRequestService.putRole(role).subscribe(response => this.refreshComponent(response));
+      rq1 = this.adminRequestService.postRole(role).subscribe(response => this.refreshComponent('Rol eklendi', 'Tamam', true));
     }
 
     this.subs.add(rq1);
   }
 
   deleteRole(id: string) {
-    const rq4 = this.adminRequestService.deleteRole(id).subscribe(response => this.refreshComponent(response));
+    const rq4 = this.adminRequestService.deleteRole(id).subscribe(response => this.refreshComponent('Rol silindi', 'Tamam', true));
 
     this.subs.add(rq4);
   }
 
-  refreshComponent(response: any) {
+  refreshComponent(message: string, action: string, state: boolean) {
 
-    this.adminService.openSnack(this.snackBar, response, response.state);
+    this.adminService.openSnack(this.snackBar, message, action, state);
 
     this.roles = null;
 

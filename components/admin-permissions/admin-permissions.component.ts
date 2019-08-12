@@ -5,7 +5,7 @@ import { CacheService } from '../../imports';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'admin-permissions',
+  selector: 'app-admin-permissions',
   templateUrl: './admin-permissions.component.html',
   styleUrls: ['./admin-permissions.component.sass']
 })
@@ -55,10 +55,10 @@ export class AdminPermissionsComponent implements OnInit, OnDestroy {
 
     if (permission.id) {
 
-      rq1 = this.adminRequestService.postPermission(permission, permission.id).subscribe(response => this.refreshComponent());
+      rq1 = this.adminRequestService.putPermission(permission, permission.id).subscribe(response => this.refreshComponent());
     } else {
 
-      rq1 = this.adminRequestService.putPermission(permission).subscribe(response => this.refreshComponent());
+      rq1 = this.adminRequestService.postPermission(permission).subscribe(response => this.refreshComponent());
     }
 
     this.subs.add(rq1);
