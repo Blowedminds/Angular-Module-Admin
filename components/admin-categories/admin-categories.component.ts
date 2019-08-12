@@ -56,10 +56,10 @@ export class AdminCategoriesComponent implements OnInit, OnDestroy {
 
     if (f.value.id) {
 
-      rq1 = this.adminRequestService.postCategory(category, f.value.id).subscribe(response => this.refreshComponent());
+      rq1 = this.adminRequestService.putCategory(f.value.id, category).subscribe(response => this.refreshComponent());
     } else {
 
-      rq1 = this.adminRequestService.putCategory(category).subscribe(response => this.refreshComponent());
+      rq1 = this.adminRequestService.postCategory(category).subscribe(response => this.refreshComponent());
     }
 
     this.subs.add(rq1);

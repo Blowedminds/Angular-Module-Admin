@@ -46,7 +46,7 @@ export class AdminUserAddComponent implements OnInit, OnDestroy {
       role_id: f.value.role_id
     };
 
-    const rq1 = this.adminRequestService.putUser(user).subscribe(response => alert(response));
+    const rq1 = this.adminRequestService.postUser(user).subscribe(response => alert(response));
 
     this.subs.add(rq1);
   }

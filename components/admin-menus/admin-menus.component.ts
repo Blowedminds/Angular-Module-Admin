@@ -109,7 +109,7 @@ export class AdminMenusComponent implements OnInit, OnDestroy {
     let rq1: any;
 
     if (menu.id) {
-      rq1 = this.adminRequestService.putMenu(menu).subscribe(response => this.refreshComponent());
+      rq1 = this.adminRequestService.putMenu(menu.id, menu).subscribe(response => this.refreshComponent());
     } else {
       rq1 = this.adminRequestService.postMenu(menu).subscribe(response => this.refreshComponent());
     }

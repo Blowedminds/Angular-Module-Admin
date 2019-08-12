@@ -55,10 +55,10 @@ export class AdminLanguagesComponent implements OnInit, OnDestroy {
 
     if (language.id) {
 
-      rq1 = this.adminRequestService.postLanguage(language).subscribe(response => this.refreshComponent());
+      rq1 = this.adminRequestService.putLanguage(language.id, language).subscribe(response => this.refreshComponent());
     } else {
 
-      rq1 = this.adminRequestService.putLanguage(language).subscribe(response => this.refreshComponent());
+      rq1 = this.adminRequestService.postLanguage(language).subscribe(response => this.refreshComponent());
     }
 
     this.subs.add(rq1);

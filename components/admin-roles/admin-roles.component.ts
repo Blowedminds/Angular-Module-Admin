@@ -68,7 +68,7 @@ export class AdminRolesComponent implements OnInit, OnDestroy {
 
     if (role.id) {
 
-      rq1 = this.adminRequestService.putRole(role, role.id).subscribe(response => this.refreshComponent('Rol güncellendi', 'Tamam', true));
+      rq1 = this.adminRequestService.putRole(role.id, role).subscribe(response => this.refreshComponent('Rol güncellendi', 'Tamam', true));
     } else {
 
       rq1 = this.adminRequestService.postRole(role).subscribe(response => this.refreshComponent('Rol eklendi', 'Tamam', true));
