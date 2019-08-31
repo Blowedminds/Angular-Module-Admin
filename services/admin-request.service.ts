@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 import { HelpersService, MainRequestService, RoutingListService } from '../imports';
 
@@ -57,10 +56,6 @@ export class AdminRequestService extends MainRequestService {
     return this.makeGetRequest('core.permission.permissions');
   }
 
-  getPermission(permission_id: string): Observable<any> {
-    return this.makeGetRequest('core.permission.permission', permission_id);
-  }
-
   postPermission(data: any): Observable<any> {
     return this.makePostRequest('core.permission.permission', data);
   }
@@ -69,8 +64,8 @@ export class AdminRequestService extends MainRequestService {
     return this.makePutRequest('core.permission.permission', data, `${id}`);
   }
 
-  deletePermission(permission_id: string): Observable<any> {
-    return this.makeDeleteRequest('core.permission.permission', permission_id);
+  deletePermission(id: number): Observable<any> {
+    return this.makeDeleteRequest('core.permission.permission', `${id}`);
   }
 
   getMenus(): Observable<any> {
@@ -123,10 +118,6 @@ export class AdminRequestService extends MainRequestService {
 
   getOptions(): Observable<any> {
     return this.makeGetRequest('core.option.options');
-  }
-
-  getOption(key: string): Observable<any> {
-    return this.makeGetRequest('core.option.option', key);
   }
 
   postOption(data: any): Observable<any> {

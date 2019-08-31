@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { AdminMenusComponent } from './components/admin-menus/admin-menus.component';
 import { AdminLanguagesComponent } from './components/admin-languages/admin-languages.component';
 import { AdminCategoriesComponent } from './components/admin-categories/admin-categories.component';
@@ -18,7 +17,6 @@ const routes: Routes = [
     path: '', component: NavigationComponent, children: [
       { path: 'user', component: AdminUserAddComponent },
       { path: 'user/:user_id', component: AdminUserEditComponent },
-      { path: 'admin', component: AdminPanelComponent },
       { path: 'admin/roles', component: AdminRolesComponent },
       { path: 'admin/permissions', component: AdminPermissionsComponent },
       { path: 'admin/menus', component: AdminMenusComponent },

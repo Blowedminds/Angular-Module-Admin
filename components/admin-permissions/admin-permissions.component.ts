@@ -64,7 +64,7 @@ export class AdminPermissionsComponent implements OnInit, OnDestroy {
     this.subs.add(rq1);
   }
 
-  deletePermission(id: string) {
+  deletePermission(id: number) {
     const rq4 = this.adminRequestService.deletePermission(id).subscribe(response => this.refreshComponent());
 
     this.subs.add(rq4);

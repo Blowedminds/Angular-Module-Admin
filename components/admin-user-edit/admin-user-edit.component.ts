@@ -34,7 +34,7 @@ export class AdminUserEditComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     const rq2 = this.activatedRoute.params.pipe(
-      switchMap((params: Params) => this.adminRequestService.getUser(params['user_id']))
+      switchMap((params: Params) => this.adminRequestService.getUser(params['user_id'] || 'undefined'))
     ).subscribe(response => this.user = response);
 
     const rq1 = this.cacheService.get('roles', this.adminRequestService.makeGetRequest('core.role.roles'))
