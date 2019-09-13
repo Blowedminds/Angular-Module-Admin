@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 
-import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { AdminCategoriesComponent } from './components/admin-categories/admin-categories.component';
 import { AdminMenusComponent } from './components/admin-menus/admin-menus.component';
 
@@ -21,7 +20,6 @@ import { SiteOptionsComponent } from './components/site-options/site-options/sit
 
 @NgModule({
   declarations: [
-    AdminPanelComponent,
     AdminCategoriesComponent,
     AdminMenusComponent,
     AdminLanguagesComponent,
