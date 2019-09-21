@@ -107,7 +107,7 @@ export class AdminRolesComponent implements OnInit, OnDestroy {
 
     for (const permission of this.permissions) {
       const index = this.edit_role.permissions.findIndex(_permission => _permission.id === permission.id);
-      console.log(index);
+
       permission.exist = index !== -1;
     }
     // this.filterRoles(role.roles);
